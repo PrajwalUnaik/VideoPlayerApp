@@ -8,22 +8,17 @@
 import SwiftUI
 
 struct QueryTag: View {
-    
-    var query:Query
-    @State var isSelected:Bool = false
+    var query: Query
+    var isSelected: Bool
     
     var body: some View {
-        
         Text(query.rawValue)
             .font(.caption)
             .bold()
             .foregroundColor(isSelected ? .black : .gray)
             .padding(10)
-            .background(.ultraThinMaterial)
+            .background(.thinMaterial)
             .cornerRadius(10)
-            .onTapGesture {
-                isSelected.toggle()
-            }
     }
 }
 
