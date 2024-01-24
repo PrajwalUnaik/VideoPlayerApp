@@ -9,7 +9,37 @@ import SwiftUI
 
 struct VideoCard: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack {
+            ZStack(alignment: .bottomLeading){
+                AsyncImage(url: URL(string: "")){ image in
+                    image.resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 160 , height: 250)
+                        .cornerRadius(30)
+                } placeholder: {
+                    Rectangle()
+                        .foregroundColor(.gray.opacity(0.3))
+                        .frame(width: 160 , height: 250)
+                        .cornerRadius(30)
+                }
+                VStack(alignment: .leading){
+                    Text("32 sec")
+                        .font(.caption).bold()
+                    Text("By XYZ")
+                        .font(.caption).bold()
+                        .multilineTextAlignment(.leading)
+                }
+                .foregroundColor(.white)
+                .shadow(radius: 10)
+                .padding()
+            }
+            Image(systemName: "play.fill")
+                .foregroundColor(.white)
+                .font(.title)
+                .padding()
+                .background(.ultraThinMaterial)
+                .cornerRadius(50)
+        }
     }
 }
 
