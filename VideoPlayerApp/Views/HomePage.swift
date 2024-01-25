@@ -9,39 +9,55 @@ import SwiftUI
 
 struct HomePage: View {
     @State private var scale: CGFloat = 1.0
-    
+    @State private var scale1: CGFloat = 1.0
+
     var body: some View {
         NavigationView {
             VStack {
+                Image("Pexel_Logo")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 90)
+                    .padding(.bottom, 50)
                 Text("Pexels")
                     .font(.custom("YourCustomFont", size: 36))
                     .fontWeight(.bold)
-                    .foregroundColor(.white)
-                    .shadow(color: .black, radius: 2, x: 0, y: 2)
+                    .foregroundColor(.primary)
+                    .fontDesign(.monospaced)
                     .padding(.bottom, 5)
                     .onAppear {
-                        withAnimation(.easeInOut(duration: 2.0).repeatForever()) {
-                            scale = 1.2
+                        withAnimation(.easeInOut(duration: 2.0).repeatCount(2)) {
+                            scale = 1.5
                         }
                     }
                     .scaleEffect(scale)
-                
+                    .padding(.bottom)
+
                 Text("Empowering Creators")
-                    .font(.headline)
+                    .font(.title3)
                     .foregroundColor(.gray.opacity(0.6))
-                
-                Image(systemName: "hand.point.down.fill")
-                    .frame(width: 30, height: 30)
-                    .foregroundColor(.black)
-                
+                    .fontDesign(.monospaced)
+
+                Text("By providing free stock photos Pexels helps millions of creators all over the world to easily create beautiful products and designs.")
+                    .multilineTextAlignment(.center)
+                    .fontDesign(.monospaced)
+                    .padding()
+                    .padding()
+
                 NavigationLink(destination: VideoViewMain()) {
                     Text("Explore Videos")
+                        .bold()
                         .foregroundColor(.primary)
                         .padding()
                         .background(.thinMaterial)
                         .cornerRadius(15)
-                }
-                .padding(.top, 20)
+                }.scaleEffect(scale1)
+                    .onAppear {
+                        withAnimation(.bouncy(duration: 2.0).repeatForever()) {
+                            scale1 = 1.1
+                        }
+                    }
+                    .padding(.top, 20)
             }
             .padding()
         }
